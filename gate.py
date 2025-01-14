@@ -64,7 +64,7 @@ class GATE:
             case 'AND':
                 self.gate_table = AND(a0, a1, b0, b1, y0, y1)
             case 'OR':
-                self.gate_table = OR(a0, a1, b0, b1, y0, y1)
+                self.gate_table =  OR(a0, a1, b0, b1, y0, y1)
     
     def dec_gate(self, k0, k1):
         for text in self.gate_table:
