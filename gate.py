@@ -24,40 +24,52 @@ def DEC(k, r, s):
     else:
         return None
 
-def dec_gate(gate, k0, k1):
-    k, r = k0, k1
-    for t in gate:
-        x = DEC(k, r, t)
-        if x:
-            return x
+def XOR(a0, a1, b0, b1, y0, y1):
+    ans = [
+        ENC(a0, b0, y0),
+        ENC(a0, b1, y1),
+        ENC(a1, b0, y1),
+        ENC(a1, b1, y0)
+    ]
+    rnd.shuffle(ans)
+    return ans
+    
+def AND(a0, a1, b0, b1, y0, y1):
+    ans = [
+        ENC(a0, b0, y0),
+        ENC(a0, b1, y0),
+        ENC(a1, b0, y0),
+        ENC(a1, b1, y1)
+    ]
+    rnd.shuffle(ans)
+    return ans
+    
+def OR(a0, a1, b0, b1, y0, y1):
+    ans = [
+        ENC(a0, b0, y0),
+        ENC(a0, b1, y1),
+        ENC(a1, b0, y1),
+        ENC(a1, b1, y1)
+    ]
+    rnd.shuffle(ans)
+    return ans
 
 class GATE:
-    def XOR(a0, a1, b0, b1, y0, y1):
-        ans = [
-            ENC(a0, b0, y0),
-            ENC(a0, b1, y1),
-            ENC(a1, b0, y1),
-            ENC(a1, b1, y0)
-        ]
-        rnd.shuffle(ans)
-        return ans
+    def __init__(self, a0, a1, b0, b1, y0, y1, type=None):
+        if type == None:
+            raise Exception('Gate type error')
+        match type:
+            case 'XOR':
+                self.gate_table = XOR(a0, a1, b0, b1, y0, y1)
+            case 'AND':
+                self.gate_table = AND(a0, a1, b0, b1, y0, y1)
+            case 'OR':
+                self.gate_table = OR(a0, a1, b0, b1, y0, y1)
     
-    def AND(a0, a1, b0, b1, y0, y1):
-        ans = [
-            ENC(a0, b0, y0),
-            ENC(a0, b1, y0),
-            ENC(a1, b0, y0),
-            ENC(a1, b1, y1)
-        ]
-        rnd.shuffle(ans)
-        return ans
+    def dec_gate(self, k0, k1):
+        for text in self.gate_table:
+            result = DEC(k0, k1, text)
+            if result:
+                return result
+        
     
-    def OR(a0, a1, b0, b1, y0, y1):
-        ans = [
-            ENC(a0, b0, y0),
-            ENC(a0, b1, y1),
-            ENC(a1, b0, y1),
-            ENC(a1, b1, y1)
-        ]
-        rnd.shuffle(ans)
-        return ans

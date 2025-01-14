@@ -27,10 +27,9 @@ if __name__ == '__main__':
         for b in range(8):
             a_bin = bin(a)[2:].zfill(3)
             b_bin = bin(b)[2:].zfill(3)
-
-            if (a >= b) != GE(a_bin, b_bin):
-                print(a, b)
-                print(a_bin, b_bin)
+            result = GE(a_bin, b_bin)
+            print("%s %s %s" %(a_bin, '>=' if result else '<' ,b_bin))
+            if (a >= b) != result:
                 raise Exception('Wrong answer.')
             
     print('All tests complete!')

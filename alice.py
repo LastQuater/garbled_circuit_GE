@@ -20,10 +20,10 @@ def build_circuit():
     f01 = gen()
     c10 = gen()
     c11 = gen()
-    gates.append(GATE.XOR(a00, a01, c00, c01, d00, d01))
-    gates.append(GATE.XOR(b00, b01, c00, c01, e00, e01))
-    gates.append(GATE.AND(d00, d01, e00, e01, f00, f01))
-    gates.append(GATE.XOR(a00, a01, f00, f01, c10, c11))
+    gates.append(GATE(a00, a01, c00, c01, d00, d01, 'XOR'))
+    gates.append(GATE(b00, b01, c00, c01, e00, e01, 'XOR'))
+    gates.append(GATE(d00, d01, e00, e01, f00, f01, 'AND'))
+    gates.append(GATE(a00, a01, f00, f01, c10, c11, 'XOR'))
 
     ### Layer 2
     a10 = gen()
@@ -38,10 +38,10 @@ def build_circuit():
     f11 = gen()
     c20 = gen()
     c21 = gen()
-    gates.append(GATE.XOR(a10, a11, c10, c11, d10, d11))
-    gates.append(GATE.XOR(b10, b11, c10, c11, e10, e11))
-    gates.append(GATE.AND(d10, d11, e10, e11, f10, f11))
-    gates.append(GATE.XOR(a10, a11, f10, f11, c20, c21))
+    gates.append(GATE(a10, a11, c10, c11, d10, d11, 'XOR'))
+    gates.append(GATE(b10, b11, c10, c11, e10, e11, 'XOR'))
+    gates.append(GATE(d10, d11, e10, e11, f10, f11, 'AND'))
+    gates.append(GATE(a10, a11, f10, f11, c20, c21, 'XOR'))
 
     ### Layer 3
     a20 = gen()
@@ -56,10 +56,10 @@ def build_circuit():
     f21 = gen()
     c30 = gen()
     c31 = gen()
-    gates.append(GATE.XOR(a20, a21, c20, c21, d20, d21))
-    gates.append(GATE.XOR(b20, b21, c20, c21, e20, e21))
-    gates.append(GATE.AND(d20, d21, e20, e21, f20, f21))
-    gates.append(GATE.XOR(a20, a21, f20, f21, c30, c31))
+    gates.append(GATE(a20, a21, c20, c21, d20, d21, 'XOR'))
+    gates.append(GATE(b20, b21, c20, c21, e20, e21, 'XOR'))
+    gates.append(GATE(d20, d21, e20, e21, f20, f21, 'AND'))
+    gates.append(GATE(a20, a21, f20, f21, c30, c31, 'XOR'))
 
     alice_input = {
         'a00': a00,
