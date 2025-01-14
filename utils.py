@@ -176,3 +176,8 @@ def net_process(message, subkey):
 
 def gen():
     return bin(rnd.getrandbits(64))[2:].zfill(64)
+
+def check_bin(params):
+    for param in params:
+        if param not in (0, 1):
+            raise Exception('Not binary')

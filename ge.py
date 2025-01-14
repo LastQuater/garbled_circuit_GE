@@ -1,6 +1,8 @@
 import alice
 import bob
 
+from utils import check_bin
+
 def GE(a, b):
     if len(a) != 3 or len(b) != 3:
         raise Exception('Input length error.')
@@ -8,6 +10,8 @@ def GE(a, b):
     a2, a1, a0 = int(a[0]), int(a[1]), int(a[2])
     b2, b1, b0 = int(b[0]), int(b[1]), int(b[2])
     
+    check_bin([a0, a1, a2, b0, b1, b2])
+
     #Alice build the circuit and send garbled gates table, inputs label and inputs to Bob.
     gates, alice_input, bob_input, c3 = alice.build_circuit()
     alice_key = alice.set_key(alice_input, a0, a1, a2)
