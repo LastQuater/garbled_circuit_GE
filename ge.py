@@ -3,14 +3,15 @@ import bob
 
 from utils import check_bin
 
-def GE(a, b):
+def GE(a, b, test_mode = False):
     if len(a) != 3 or len(b) != 3:
         raise Exception('Input length error.')
 
     a2, a1, a0 = int(a[0]), int(a[1]), int(a[2])
     b2, b1, b0 = int(b[0]), int(b[1]), int(b[2])
     
-    check_bin([a0, a1, a2, b0, b1, b2])
+    if test_mode == False:
+        check_bin([a0, a1, a2, b0, b1, b2])
 
     #Alice build the circuit and send garbled gates table, inputs label and inputs to Bob.
     gates, alice_input, bob_input, c3 = alice.build_circuit()
@@ -31,7 +32,7 @@ if __name__ == '__main__':
         for b in range(8):
             a_bin = bin(a)[2:].zfill(3)
             b_bin = bin(b)[2:].zfill(3)
-            result = GE(a_bin, b_bin)
+            result = GE(a_bin, b_bin, test_mode=True)
             print("%s %s %s" %(a_bin, '>=' if result else '<' ,b_bin))
             if (a >= b) != result:
                 raise Exception('Wrong answer.')
