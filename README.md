@@ -20,13 +20,15 @@ python ge.py
 
 ### Normal GE gate
 
-By definition, $\text{GE}(a,b)$ is defined as:
+By definition, $\text{GE}(a,b)$ is defined as:  
+
 $$
 \text{GE}(a,b) = \begin{cases}
 1,\quad a\ge b\\
 0,\quad a < b
 \end{cases}
-$$
+$$  
+
 Below is the induce of the boolean circuit
 
 For $a = a_2a_1a_0,\quad b = b_2 b_1 b_0$
