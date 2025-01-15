@@ -31,23 +31,29 @@ Below is the induce of the boolean circuit
 
 For $a = a_2a_1a_0,\quad b = b_2 b_1 b_0$
 
-Definite:
+Definite:  
+
 $$
 c_i = \begin{cases}
 1, \quad a_{i - 1}\cdots a_0 \ge b_{i-1}\cdots b_0\\
 0,\quad \text{otherwise}
 \end{cases}
-$$
-And we have:
+$$  
+
+And we have:  
+
 $$
 c_{i+1} =  (a_i > b_i) \text{ or } (a_i == b_i\text{ and } c_i == 1) \cdots(1)
-$$
+$$  
+
 $c_0 =  1$ to handle the equal situation.
 
-$(1)$ can be simplify into:
+$(1)$ can be simplify into:  
+
 $$
 c_{i+1} = a_i\oplus \Big((a_i\oplus c_i)\land (b_i\oplus c_i)\Big)
-$$
+$$  
+
 We build the circuit according to this. 
 
 <img src="imgs\normal_gates.jpg" alt="normal_gates" style="zoom:61%;" />
