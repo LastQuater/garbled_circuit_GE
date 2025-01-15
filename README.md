@@ -50,7 +50,7 @@ c_{i+1} = a_i\oplus \Big((a_i\oplus c_i)\land (b_i\oplus c_i)\Big)
 $$
 We build the circuit according to this. 
 
-<img src="C:\Users\dorma\Desktop\CS252\project\normal_gates.jpg" alt="normal_gates" style="zoom:61%;" />
+<img src="imgs\normal_gates.jpg" alt="normal_gates" style="zoom:61%;" />
 
 This figure shows the first layer of the circuit, which can handle $1$-bit $\text{GE}$ with the result $c_1$. For $3$-bits $\text{GE}$, we need to repeat this circuit $3$ times, and  the final result is $c_3$.
 
